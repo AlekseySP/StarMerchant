@@ -1,0 +1,75 @@
+#:kivy 1.0
+
+<MainScreen>:
+	orientation: "vertical"
+	name_label: name_label
+	cost_label: cost_label
+	q_label: q_label
+	planet_view: planet_view
+	
+	BoxLayout:
+		orientation: "horizontal"
+		
+		BoxLayout:
+						
+			Image:
+				id: planet_view
+				source: "bluered_planet.png"
+				size: self.texture_size
+					
+		BoxLayout:
+			orientation: "vertical"
+			size_hint: .5, None
+			
+			BoxLayout:
+				orientation:"horizontal"
+				#size_hunt: .3, None
+				canvas:
+					Color:
+						rgb: 0, 1, 0, 1
+					Line:
+						width: 2
+						rectangle: self.x, self.y, self.width, self.height
+				Label:
+					text: "Name:"
+				Label:
+					id: name_label
+					text: "Earth 2"
+					color: 1, 1, 0, 1
+					
+			BoxLayout:
+				canvas:
+					Color:
+						rgb: 0, 1, 0, 1
+					Line:
+						rectangle: self.x, self.y, self.width, self.height	
+				Label:
+					text: "Cost:"
+				Label:
+					id: cost_label
+					text: "$"
+					color: 1, 1, 0, 1
+					
+			BoxLayout:
+				canvas:
+					Color:
+						rgb: 0, 1, 0, 1
+					Line:
+						rectangle: self.x, self.y, self.width, self.height	
+				Label:
+					text: "Amount:"
+				Label:
+					id: q_label
+					text: "unit"
+					color: 1, 1, 0, 1
+				
+	BoxLayout:
+		orientation: "horizontal"
+		size_hint: 1, None
+		
+		Button:
+			text: "Trade"
+			on_release: root.say()
+		Button:
+			text: "Exit"
+			on_release: app.stop()
